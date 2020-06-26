@@ -12,3 +12,6 @@ df = country_data.history(start=start_date, end=end_date)
 # df['Close'].plot(title="TSLA's stock price")
 print(df.head())
 
+data_brazil = yf.Ticker('^bvsp')
+df1 = data_brazil.history(start=start_date, end=end_date)
+print(df1.head())
