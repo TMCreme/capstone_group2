@@ -1,5 +1,4 @@
 import pandas as pd 
-from pandas_datareader import data
 import yfinance as yf
 import matplotlib.pyplot as plt 
 import math
