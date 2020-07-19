@@ -36,19 +36,20 @@ snp500_monthly_df["Returns"] = snp500_monthly_df["Adj Close"].pct_change().dropn
 shanghai_monthly_df["Returns"] = shanghai_monthly_df["Adj Close"].pct_change().dropna()
 
 # Describing the basic statistics of the data
-print("JSE.JO Daily Stock Return Basic Statistics Description \n\n", joburg_daily_df.describe() + "\n\n")
-print("S%P500 Daily Stock Return Basic Statistics Description \n\n", joburg_daily_df.describe() + "\n\n")
-print("Shanghai Daliy Stock Return Basic Statistics Description \n\n", joburg_daily_df.describe() + "\n\n")
+print("JSE.JO Daily Stock Return Basic Statistics Description \n\n", joburg_daily_df.describe(), "\n\n")
+print("S%P500 Daily Stock Return Basic Statistics Description \n\n", snp500_daily_df.describe(), "\n\n")
+print("Shanghai Daliy Stock Return Basic Statistics Description \n\n", shanghai_daily_df.describe(), "\n\n")
 
 ## Plotting the Daily returns data 
 fig = plt.figure()
 ax1 = fig.add_axes([0.1,0.1,0.8,0.8])
-# ax1.plot(joburg_daily_df["Returns"])
+ax1.plot(joburg_daily_df["Returns"])
 ax1.plot(snp500_daily_df["Returns"])
 ax1.plot(shanghai_daily_df["Returns"])
 ax1.set_xlabel("Date")
 ax1.set_ylabel("Returns")
 ax1.set_title("Stock Index daily returns for the dataset")
+ax1.legend()
 plt.show()
 
 ## Plotting the Monthly returns data 
@@ -62,6 +63,10 @@ ax2.set_ylabel("Returns")
 ax2.set_title("Stock Index Monthly returns for the dataset")
 ax2.legend()
 plt.show()
+
+# Plotting Histogram for the daily Returns
+print("Histogram of daily returns for JSE.JO")
+plt.hist(joburg_daily_df["Returns"])
 
 
 # Correlation between the returns for the 3 indices
@@ -77,7 +82,7 @@ print("Correlations between the various returns of the Monthly Stock data")
 print(monthly_returns_df.corr())
 
 # Fitting the data into an OLS regression model
-joburg_model = sm.OLS(daily_returns_df['JSE.JO'], np.ones(len(daily_returns_df['JSE.JO'])))
+joburg_model = sm.OLS(daily_returns_df['JSE.JO'].dropna(), np.ones(len(daily_returns_df['JSE.JO'].dropna())))
 joburg_results = joburg_model.fit()
 # The summary presents results on Durbin watson, Jarques-Bera, P-val, etc
 print(joburg_results.summary())
