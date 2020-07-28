@@ -76,9 +76,6 @@ snp500 = index_data['GSPC Adj Close']
 shan = index_data['SS Adj Close']
 
 
-# In[11]:
-
-
 #Plot historical evolution of S&P 500 from June 2006 to May 2020.
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
