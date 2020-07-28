@@ -680,6 +680,7 @@ print('Critical Values:')
 for key, value in dickfullershan_result[4].items():
     print('\t%s: %.3f' % (key, value))
 
+# Reggime Switching Model using the Markov's Regressing Model
 
 # Regime Switching model
 #Fit the model with stock returns for JSE.JO
@@ -799,3 +800,11 @@ plt.ylabel('Returns')
 plt.title('Smoothed probability of a low-variance regime for Shaghai SE stock returns')
 plt.xlabel('Date')  
 plt.grid()
+
+
+
+
+
+
+
+
