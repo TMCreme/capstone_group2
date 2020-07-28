@@ -7,16 +7,38 @@
 Data duration is from June 2006 to May 2020
 
 
-Market Indices used are : 
-    * S&P 500 (representing the developed market),
-    * JSE.JO (representing South Africa emerging market) and 
-    * 000001.SS Shanghai Stock Exchange Composite Index (representing China emerging market)
+Analysis in these periods
 
-* Download the data
-* Calulate returns 
+* Full Time Period: June 2006 – May 2020
+
+* 2008 Financial Crisis Period: July 2007 – June 2009
+
+* In between: July 2009 – Nov. 2019
+
+* Covid-19 Period: Dec. 2019 – May 2020
+
+
+Market Indices used are : 
+* S&P 500 (representing the developed market),
+
+* JSE.JO (representing South Africa emerging market) 
+
+* 000001.SS Shanghai Stock Exchange Composite Index (representing China emerging market)
+
+* Download the data for indices
+* Download FX data for ZAR-USD and CNY-USD 
+* Convert the prices for JSE from ZAR to USD
+* Convert the prices for 000001.SS from CNY to USD
+* Calulate returns and volatility with plots
 * Describe the basic statistics of the data
-* Plot the returns 
-* Ljung Box test for auto-correlation
+* Normality tests of stock returns together with plots
+* Correlation between stock prices and returns
+* Test for auto-correlation and plots
+* Stationarity Tests for returns 
+* Volatility Modelling for the Market Returns (ARCH and GARCH models) 
+* Long and Short run relationship between S&P 500 and the other 2 
+* Regime Switching Model using the Markov's Regression model 
+
 
 ## Content of this project. 
     This project was orginally done in Jupyter-Notebook; an in-browser based IDLE for python projects.
@@ -37,41 +59,47 @@ For the purpose of submitting this project as part of the requirements for the W
 
 Create a Virtual environment in python by running the following on Windows
 
-    1. pip install virtualenv virtualenvwrapper
+* pip install virtualenv virtualenvwrapper
 
-    2. virtualenv *<name_of_your_virtual_environment>*
+* virtualenv *<name_of_your_virtual_environment>*
 
-    3. *<name_of_your_virtual_enrionment>*\Scripts\activate 
+* *<name_of_your_virtual_enrionment>*\Scripts\activate 
 
 
-Congratulations!!! Your vritual environment is ready for coding now. To deactivate the virtual environment, just run *deactivate*.
+Congratulations!!! 
+
+Your vritual environment is ready for coding now. To deactivate the virtual environment, just run *deactivate*.
 
 You can visit the python official documentations to read more about virtualenv and how to create and use it on other systems like Linux and MacOS. Here is a link to guide you. https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/ 
 
 
-####Cloning the code. 
+#### Cloning the code. 
     In your virtual environment, run the following command to clone this project.
 
-    *git clone https://github.com/TMCreme/capstone_group2.git* 
+    * git clone https://github.com/TMCreme/capstone_group2.git *
     
     This command downloads the entire project onto your local machine 
     
     Run the following command to enter the project's root directory
     
-    *cd capstone_group2* 
+    * cd capstone_group2 * 
 
-####Running the code
+#### Running the code
     To run the code, be sure that the Excel file containing the data is in the directory with the main.py file and run the following command
     
-    To install the modules used in the project
+To install the modules used in the project
 
-        *pip install -r requirements.txt* 
-    
-    To exceute the code
+* *pip install -r requirements.txt* 
 
-        *python main.py*
+To exceute the code
 
-
+* *python main.py*
 
 
+
+## ACKNOWLEDGEMENT
+* finance.yahoo.com
+* www.investing.com
+* python.org 
+* wqu.org 
 
