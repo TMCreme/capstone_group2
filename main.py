@@ -199,6 +199,26 @@ percent = {'Asset' : ['S&P 500' , 'JSE Limited', 'Shanghai Stock Exchange'],
 percentile_dataframe = pd.DataFrame(percent, columns = ['Asset', 'Minimum', '25th Percentile', 'Median', '75th Percentile', 'Maximum'])
 print(percentile_dataframe)
 
+#Obtain the number of observations in index_data object 
+number_of_rows = len(index_data)
+print('Today number of trading days from Jun 2006 to May 2020:', number_of_rows)
+
+#14 years counting from June 2006 to May 2020
+Average_trading_days_per_year = number_of_rows/14
+print('Average trading days:', Average_trading_days_per_year)
+
+#obtain the tail observations
+print(index_data.tail())
+
+
+return_mean = log_returns.mean()
+return_stddev = log_returns.std()
+return_annualized_volatility = return_stddev*np.sqrt(Average_trading_days_per_year)
+return_risk_ratio = return_mean / return_stddev
+
+print('Annualized volatility of Return Indices \n\n', return_annualized_volatility, '\n\n')
+print('Return/Risk Ratio of the Return Indices \n\n', return_risk_ratio, '\n\n')
+
 
 # # Normality Tests of Returns
 
@@ -303,12 +323,52 @@ plt.grid(False)
 plt.show()
 
 
+# Function to calculate Correlation of the various return indices using different date ranges
+def caculate_correlation_of_log_returns_daily(from_date="2006-06-01", to_date="2020-05-29"):
+    reset_log_returns = log_returns.reset_index()
+    print("Correlations among the various returns of the Daily Stock from "+ from_date+ " to "+to_date)
+    sliced_returns = reset_log_returns[reset_log_returns.Date >=from_date]
+    sliced_returns = sliced_returns[reset_log_returns.Date <=to_date]
+    return sliced_returns.corr()
 
-#Correlation of the various return indices
-print("Correlations among the various returns of the Daily Stock \n\n", log_returns.corr(), "\n\n")
+def calculate_correlation_of_price_indices(from_date="2006-06-01", to_date="2020-05-29"):
+    #Correlation of the various price indices
+    print("Correlations among the various price indices from "+from_date +" to "+to_date)
+    sliced_index = index_data[index_data.Date >=from_date]
+    sliced_index = sliced_index[index_data.Date <=to_date]
+    return sliced_index.corr()
 
-#Correlation of the various price indices
-print("Correlations among the various price indices \n\n",index_data.corr() , "\n\n")
+# Function to calculate Correlation of the various return indices using different date ranges
+# Full Period: July 2006 – June 2020
+caculate_correlation_of_log_returns_daily()
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# Full Period: July 2006 – June 2020
+calculate_correlation_of_price_indices()
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# 2008 Financial Crisis Period: July 2007 – June 2009
+caculate_correlation_of_log_returns_daily("2007-07-01", "2009-06-30")
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# 2008 Financial Crisis Period: July 2007 – June 2009
+calculate_correlation_of_price_indices("2007-07-01", "2009-06-30")
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# July 2009 – Nov. 2019
+caculate_correlation_of_log_returns_daily("2009-07-01", "2019-11-30")
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# July 2009 – Nov. 2019
+calculate_correlation_of_price_indices("2009-07-01", "2019-11-30")
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# Covid-19 Period: Dec. 2019 – May 2020
+caculate_correlation_of_log_returns_daily("2019-12-01", "2020-05-31")
+
+# Function to calculate Correlation of the various return indices using different date ranges
+# Covid-19 Period: Dec. 2019 – May 2020
+calculate_correlation_of_price_indices("2019-12-01", "2020-05-31")
 
 
 #Correlation of normalized prices
