@@ -36,9 +36,13 @@ Market Indices used are :
 For the purpose of submitting this project as part of the requirements for the WQU MScFE program, the repo is private until further revision. 
 
 Create a Virtual environment in python by running the following on Windows
+
     1. pip install virtualenv virtualenvwrapper
+
     2. virtualenv *<name_of_your_virtual_environment>*
+
     3. *<name_of_your_virtual_enrionment>*\Scripts\activate 
+
 
 Congratulations!!! Your vritual environment is ready for coding now. To deactivate the virtual environment, just run *deactivate*.
 
@@ -64,7 +68,7 @@ You can visit the python official documentations to read more about virtualenv a
         *pip install -r requirements.txt* 
     
     To exceute the code
-    
+
         *python main.py*
 
 
