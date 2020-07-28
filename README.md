@@ -25,6 +25,7 @@ Market Indices used are :
 
 * 000001.SS Shanghai Stock Exchange Composite Index (representing China emerging market)
 
+Use cases included in this code :
 * Download the data for indices
 * Download FX data for ZAR-USD and CNY-USD 
 * Convert the prices for JSE from ZAR to USD
