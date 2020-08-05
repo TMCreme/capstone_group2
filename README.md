@@ -42,7 +42,7 @@ Use cases included in this code :
 * Stationarity Tests for returns 
 * Volatility Modelling for the Market Returns (ARCH and GARCH models) 
 * Long and Short run relationship between S&P 500 and the other 2 
-* Regime Switching Model using the Markov's Regression model 
+* Regime Switching Model using the Markov's Regression model for 3 and 2 regimes
 
 
 ## Content of this project. 
