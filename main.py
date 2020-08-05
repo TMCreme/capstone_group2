@@ -677,9 +677,11 @@ print('Critical Values:')
 for key, value in dickfullershan_result[4].items():
     print('\t%s: %.3f' % (key, value))
 
+
+
 # Reggime Switching Model using the Markov's Regressing Model
 
-# Regime Switching model
+# Regime Switching model - 3 Regimes
 #Fit the model with stock returns for JSE.JO
 markov_model_jse = sm.tsa.MarkovRegression(log_returns["JSE Adj Close"].dropna(), k_regimes=3, 
                                        trend='nc', switching_variance=True)
@@ -688,7 +690,7 @@ markov_results_jse.summary()
 
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for JSE  == low-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for JSE  == low-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_jse.smoothed_marginal_probabilities[0])  
@@ -698,9 +700,7 @@ plt.xlabel('Date')
 plt.grid()
 
 
-
-
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for JSE  == medium-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for JSE  == medium-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_jse.smoothed_marginal_probabilities[1])  
@@ -710,7 +710,7 @@ plt.xlabel('Date')
 plt.grid()
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for JSE  == high-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for JSE  == high-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_jse.smoothed_marginal_probabilities[2])  
@@ -721,7 +721,39 @@ plt.grid()
 
 
 
-# Regime Switching model
+#Plot Filtered marginal Probabilities of the Switiching model for JSE  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.filtered_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a low-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered Marginal marginal Probabilities of the Switiching model for JSE  == medium-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.filtered_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a medium-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered Marginal marginal Probabilities of the Switiching model for JSE  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.filtered_marginal_probabilities[2])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a high-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+
+
+# Regime Switching model  - 3 Regimes
 #Fit the model with stock returns for S&P 500
 markov_model_snp = sm.tsa.MarkovRegression(log_returns["GSPC Adj Close"].dropna(), k_regimes=3, 
                                        trend='nc', switching_variance=True)
@@ -729,7 +761,7 @@ markov_results_snp = markov_model_snp.fit()
 markov_results_snp.summary()
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for GSPC  == low-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for GSPC  == low-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_snp.smoothed_marginal_probabilities[0])  
@@ -740,7 +772,7 @@ plt.grid()
 
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for GSPC  == medium-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for GSPC  == medium-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_snp.smoothed_marginal_probabilities[1])  
@@ -750,7 +782,7 @@ plt.xlabel('Date')
 plt.grid()
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for GSPC  == high-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for GSPC  == high-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_snp.smoothed_marginal_probabilities[2])  
@@ -760,7 +792,38 @@ plt.xlabel('Date')
 plt.grid()
 
 
-# Regime Switching model
+#Plot Filtered marginal Probabilities of the Switiching model for GSPC  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.filtered_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a low-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for GSPC  == medium-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.filtered_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a medium-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for GSPC  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.filtered_marginal_probabilities[2])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a high-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+# Regime Switching model - 3 regimes 
 #Fit the model with stock returns for the SSE
 markov_model_sse = sm.tsa.MarkovRegression(log_returns["SS Adj Close"].dropna(), k_regimes=3, 
                                        trend='nc', switching_variance=True)
@@ -768,7 +831,7 @@ markov_results_sse = markov_model_sse.fit()
 markov_results_sse.summary()
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for SSE  == low-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for SSE  == low-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_sse.smoothed_marginal_probabilities[0])  
@@ -778,7 +841,7 @@ plt.xlabel('Date')
 plt.grid()
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for SSE  == medium-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for SSE  == medium-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_sse.smoothed_marginal_probabilities[1])  
@@ -789,10 +852,42 @@ plt.grid()
 
 
 
-#Plot JSE Smoothed marginal Probabilities of the Switiching model for SSE  == high-variance
+#Plot Smoothed marginal Probabilities of the Switiching model for SSE  == high-variance
 # get_ipython().run_line_magic('matplotlib', 'inline')
 matplotlib.rcParams['figure.figsize'] = [15, 7]
 plt.plot(markov_results_sse.smoothed_marginal_probabilities[2])  
+plt.ylabel('Returns')  
+plt.title('Smoothed Marginal probability of a high-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for SSE  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.filtered_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Filtered marginal probability of a low-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for SSE  == medium-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.filtered_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Filtered marginal probability of a medium-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for SSE  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.filtered_marginal_probabilities[2])  
 plt.ylabel('Returns')  
 plt.title('Smoothed probability of a low-variance regime for Shaghai SE stock returns')
 plt.xlabel('Date')  
@@ -800,6 +895,151 @@ plt.grid()
 
 
 
+# Regime Switching model - 2 Regimes
+#Fit the model with stock returns for JSE.JO
+markov_model_jse = sm.tsa.MarkovRegression(log_returns["JSE Adj Close"].dropna(), k_regimes=2, 
+                                       trend='nc', switching_variance=True)
+markov_results_jse = markov_model_jse.fit()
+markov_results_jse.summary()
+
+
+
+#Plot Smoothed marginal Probabilities of the Switiching model for JSE  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.smoothed_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Smoothed probability of a low-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Smoothed marginal Probabilities of the Switiching model for JSE  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.smoothed_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Smoothed probability of a high-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for JSE  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.filtered_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a low-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for JSE  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_jse.filtered_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a high-variance regime for JSE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+# Regime Switching model  - 2 Regimes
+#Fit the model with stock returns for S&P 500
+markov_model_snp = sm.tsa.MarkovRegression(log_returns["GSPC Adj Close"].dropna(), k_regimes=2, 
+                                       trend='nc', switching_variance=True)
+markov_results_snp = markov_model_snp.fit()
+markov_results_snp.summary()
+
+
+#Plot Smoothed marginal Probabilities of the Switiching model for GSPC  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.smoothed_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Smoothed probability of a low-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Smoothed marginal Probabilities of the Switiching model for GSPC  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.smoothed_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Smoothed probability of a high-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for GSPC  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.filtered_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a low-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for GSPC  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_snp.filtered_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a high-variance regime for S&P 500 stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+# Regime Switching model - 2 regimes
+#Fit the model with stock returns for the SSE
+markov_model_sse = sm.tsa.MarkovRegression(log_returns["SS Adj Close"].dropna(), k_regimes=2, 
+                                       trend='nc', switching_variance=True)
+markov_results_sse = markov_model_sse.fit()
+markov_results_sse.summary()
+
+
+#Plot Smoothed marginal Probabilities of the Switiching model for SSE  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.smoothed_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Smoothed probability of a low-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Smoothed marginal Probabilities of the Switiching model for SSE  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.smoothed_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Smoothed probability of a low-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for SSE  == low-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.filtered_marginal_probabilities[0])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a low-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
+
+
+#Plot Filtered marginal Probabilities of the Switiching model for SSE  == high-variance
+# get_ipython().run_line_magic('matplotlib', 'inline')
+matplotlib.rcParams['figure.figsize'] = [15, 7]
+plt.plot(markov_results_sse.filtered_marginal_probabilities[1])  
+plt.ylabel('Returns')  
+plt.title('Filtered Marginal probability of a low-variance regime for Shaghai SE stock returns')
+plt.xlabel('Date')  
+plt.grid()
 
 
 
