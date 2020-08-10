@@ -122,7 +122,7 @@ normalised_prices = (index_data.set_index("Date") - means)/stddevs
 matplotlib.rcParams['figure.figsize'] = [18, 7]
 plt.plot(normalised_prices)  
 plt.ylabel('Normalised Indices')  
-plt.legend(assets)  
+plt.legend(normalised_prices)  
 plt.grid()
 
 
@@ -134,7 +134,7 @@ log_returns = np.log(index_data.set_index('Date')).diff().dropna()
 matplotlib.rcParams['figure.figsize'] = [18, 7]
 plt.plot(log_returns)
 plt.ylabel('Log returns')
-plt.legend(assets)
+plt.legend(log_returns)
 plt.grid()
 
 
